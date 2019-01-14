@@ -9,6 +9,7 @@ solutionType = 0;
 regularizationLambda = 5e3;
 
 load('images.mat');
+im = double(im_int2);
 
 Nx = size(im, 1);  
 Ny = size(im, 2);  
