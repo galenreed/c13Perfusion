@@ -101,18 +101,20 @@ imagesc(BF(:,:,1));
 
 figure()
 lw = 3;
+fs = 20
 plot(t, sampleAIF, '--', 'linewidth', lw, ...
      t, sampleTimeCourse, 'o', 'linewidth', lw,...
      t, sampleFit,'-','linewidth', lw);
 legend('AIF', 'renal cortex pixel', 'fit');         
-set(gca, 'fontsize', 20)
+set(gca, 'fontsize', fs)
 
 % next 2 lines just to make the legend with the right fontsize
 copied_legend = findobj(gcf(),"type","axes","Tag","legend");
 set(copied_legend, "FontSize", 20);
 
 figure();
-plot(t, sampleResidual, '.-')
-title('residual');
+plot(t, sampleResidual, '.-','linewidth', lw);
+legend('residue');
+set(gca, 'fontsize', fs)
 
 
