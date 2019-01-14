@@ -1,28 +1,22 @@
 clear all;
 close all;
-pkg load dicom;
 options = optimset('Display','off');
-
-Nt = 10;
-Nz = 8;
-
-timeBetweenImages = 6;
-t = [0:1:(Nt-1)] * timeBetweenImages;
 
 % 0 for regularized inverse, 1 for thresholded SVD
 solutionType = 0;
 
 % regularization for least squares
-regularizationLambda = 1e3;
+regularizationLambda = 5e3;
 
-% read dicom files
-for ii=1:Nt
-  for jj=1:Nz    
-    im(:,:,jj,ii) = double(dicomread(strcat('E7917/4/E7917S4I',int2str(33+(jj-1)+Nz*(ii-1)) ,'.DCM')));       
-  end
-end
+load('images.mat');
+
 Nx = size(im, 1);  
 Ny = size(im, 2);  
+Nt = size(im, 4);
+Nz = size(im, 3);
+
+timeBetweenImages = 6;
+t = [0:1:(Nt-1)] * timeBetweenImages;
 
 AIFPixels = [136 120;
              136 117;
