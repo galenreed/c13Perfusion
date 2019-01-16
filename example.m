@@ -98,15 +98,20 @@ end
 
 figure();
 imagesc(BF(:,:,1));
+colormap gray
 
 figure()
 lw = 3;
 fs = 20
-plot(t, sampleAIF, '--', 'linewidth', lw, ...
+plot(t, sampleAIF, '-', 'linewidth', lw, ...
      t, sampleTimeCourse, 'o', 'linewidth', lw,...
      t, sampleFit,'-','linewidth', lw);
 legend('AIF', 'renal cortex pixel', 'fit');         
+xlabel('time [s]', 'fontsize', fs);
+ylabel('signal', 'fontsize', fs);
+
 set(gca, 'fontsize', fs)
+
 
 % next 2 lines just to make the legend with the right fontsize
 copied_legend = findobj(gcf(),"type","axes","Tag","legend");
@@ -114,7 +119,8 @@ set(copied_legend, "FontSize", 20);
 
 figure();
 plot(t, sampleResidual, '.-','linewidth', lw);
-legend('residue');
+xlabel('time [s]', 'fontsize', fs);
+ylabel('R(t) F', 'fontsize', fs);
 set(gca, 'fontsize', fs)
 
 
